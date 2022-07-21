@@ -1,0 +1,29 @@
+version: "3.7"
+
+
+networks:
+  datanet:
+
+services:
+  db:
+    image: citusdata/citus:11.0
+    command: -c 'log_min_messages=notice'
+    env_file: .env
+    ports:
+      - ${DB_LOCAL_PORT:-5433}:5432
+    networks:
+      datanet:
+
+  migration:
+    image: postgres
+    restart: "no"
+    env_file: .env
+    volumes:
+      - ./migrate-db.sh:/opt/src/migrate-db.sh:ro
+      - ./migrations:/opt/src/migrations:ro
+    working_dir: /opt/src
+    command: sh -c "sh migrate-db.sh"
+    networks:
+      datanet:
+    links:
+      - db
