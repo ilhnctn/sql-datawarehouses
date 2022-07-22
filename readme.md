@@ -4,7 +4,8 @@ This repo demonstrates a Data Warehouse implementation on columnar database with
 The main goal is to give a tool replaceable by [Google BigQuery](https://cloud.google.com/bigquery/), which relies on standard SQL with processing enormous amounts of data in an serverless fashion.
 
 
-### Start Data Layer In Dev Env
+
+## Start Data Layer In Dev Env
 Since BigQuery supports Standard SQL queries, every query used in this repo should run directly in BigQuery as well. 
 
 
@@ -100,3 +101,15 @@ test_db=# EXPLAIN ANALYZE VERBOSE SELECT repo_name from data_table_columnar wher
 test_db=# 
 
 ```
+
+
+## Missing Parts & TODOs
+
+Due to time limitations (full time work + German course partially) and internet issues I couldn't focus on implementation but stood on reading/research part.
+
+- [ ] Use Grafana for visualising Pull Requests over time 
+- [ ] Use table partitioning to increase performance (based on use cases)
+- [ ] Add data ingestion examples (Both local and BigQuery)
+- [ ] Prepare release/deployment (IaC) scripts 
+- [ ] Plan a development Pipeline (CI/CD ? Not sure yet)
+- [ ] Use parametrizible sql function for initial data preparation (`insert_random_data_to_table` doesn't work right now)
