@@ -1,0 +1,75 @@
+Hello Ilhan ,
+
+ 
+
+As continuation of your application we’re inviting you for our coding challenge.
+
+ 
+
+We give you 7 days to work on it, so that you can work on it in a convenient time. The expected time to complete the challenge is 2-5 hours. Please let us know, how much time you spent on it afterward.
+
+Feel free to reach out to us in case of questions!
+
+ 
+
+Background description
+
+Imagine, you are a data engineer who is part of a team developing a data warehouse solution so that different stakeholders in the software development process (test managers, release managers, product managers, developers, etc.) can view relevant data in order to make decisions that optimize their processes.
+This data warehouse pulls in data from many different sources.
+Frequently a stakeholder (in this case a software delivery manager) requests that new data be incorporated into the data warehouse to perform some analysis.
+
+In this user story you will need to pull new data about the Grafana repository into a database.
+
+Your solution should be scalable (the database is growing rapidly) and show an understanding of competing performance requirements.
+
+The choice of technology and details of implementation are up to you.
+
+ 
+
+But most importantly: Have fun!
+
+ 
+
+Your VideoWall Team
+
+ 
+
+Summary
+
+As a software delivery manager, I would like to query a database that contains historical pull request data in order to better view development activity metrics.
+
+ 
+
+Notes
+
+The repository to be analyzed: https://github.com/grafana/grafana
+The solution should allow managers to query metrics for a particular date (see Acceptance Criteria)
+The whole data set should be possible to query.
+Please provide a production ready delivery.
+Please create a private repository on github. Add https://github.com/mbition-videowall as a collaborator after you are done with the challenge.
+Visualization is nice to have, but not required.
+ 
+
+Acceptance Criteria
+
+WHEN I query the database
+
+THEN I can see how long does it take to close a pull request in the past and now
+
+e.g. I can see the median pull request closure times for different dates and compare them
+
+this helps me to understand if the software delivery speed slows down or gets faster
+
+AND I can monitor the open pull requests queue
+
+e.g. I can see how many pull requests were open on particular date and if the queue grows or gets down over time
+
+AND I can see how many unique contributors (committers) were there on a particular date
+
+ 
+
+Best Regards,
+
+Nicole
+
+MBition GmbH
