@@ -8,6 +8,8 @@ The main goal is to give a tool replaceable by [Google BigQuery](https://cloud.g
 ## Start Data Layer In Dev Env
 Since BigQuery supports Standard SQL queries, every query used in this repo should run directly in BigQuery as well. 
 
+Important Note: Due to an access issue on docker-compose networking, I moved migrations to a separate command.
+Ideally docker-compose would spin everything up (currently commented out in compose file)
 
 ```bash
 # Clone the repo
@@ -17,9 +19,11 @@ git clone REPO_NAME && cd repo_dir
 cp .env.template .env
 
 
-# Start the environment
-docer-compose up &
+# Start the environment.
+docker-compose up 
 
+# In a separate terminal tab
+sh migrate-db.sh
 ```
 
 Commands above will setup a Postgresql database with Citus extension, which enables distributes Postgresql for scale and prepare some tables with pre-populated data which mimics the [Github dataset](https://cloud.google.com/blog/topics/public-datasets/github-on-bigquery-analyze-all-the-open-source-code) on BigQuery.
@@ -29,7 +33,11 @@ For more about BigQuery part, see [this page](./bigquery.md).
 
 Below is the showcase of the size difference between columnar and normal tables. Even though the number of rows and the content are exactly same, size of `data_table_columnar` is 2416kB (2.4MB) while the size of `data_table_normal` is 721MB, which means there is an almost 300 times difference between the formats.
 ```sh
-docker exec -it mbition-dw_db_1 psql -U admin -d test_db
+docker exec -it mbition-dw_db_1 psql -U test_user -d test_db
+
+# or
+PGPASSWORD=PleaseChangeThis psql -q -v ON_ERROR_STOP=1 -h localhost -p 5432 -U test_user -d test_db
+
 psql (14.4 (Debian 14.4-1.pgdg110+1))
 Type "help" for help.
 

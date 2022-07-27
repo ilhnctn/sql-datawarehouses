@@ -26,11 +26,6 @@
 -- LANGUAGE 'plpgsql';
 
 -- Since the function above didn't run through, use hardcoded values as below.
-CREATE TABLE data_table_columnar(
-    repo_name text not null, 
-    commit_datetime timestamp not null, 
-    description text, 
-    payload jsonb) USING columnar;
 
 WITH payload_data AS(
     SELECT (
